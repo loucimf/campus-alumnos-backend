@@ -5,8 +5,16 @@ const AlumnoSchema = mongoose.Schema(
     {
         name: {
             type: String,
-            required: [true, "no puede existir un alumno sin nombre"]
-        }
+            required: [true, "No puede existir un alumno sin nombre"]
+        },
+        lastName: {
+            type: String,
+            required: [true, "No puede existir un alumno sin Apellido"]
+        },
+        password: {
+            type: String,
+            required: [true, "No puede existir una cuenta sin contrasena"]
+        },
     }
 )
 
