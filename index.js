@@ -14,6 +14,8 @@ const webPath = path.join(import.meta.dirname, 'api-signup', 'index.html')
 
 app.use(morgan("tiny"))
 
+app.use(express.static('api-signup'))
+
 app.use('/example', exampleRouter)
 
 app.get('/123', (request, response) => {
