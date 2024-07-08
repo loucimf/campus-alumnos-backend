@@ -3,7 +3,6 @@ import mongoose, { mongo } from 'mongoose'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
 import exampleRouter from './routes/exampleRoutes.js'
-import path from 'path'
 
 dotenv.config()
 
@@ -15,9 +14,6 @@ app.use(morgan("tiny"))
 
 app.use(express.static('api-signup'))
 
-app.use((request, response) => {
-    response.status(404).send("No se ha encontrado ninguna ruta");
-});
 
 try {
     await mongoose.connect(MONGO_URL)
@@ -30,3 +26,10 @@ try {
 app.listen(PORT, () => {
   console.log(`CONNECTION SUCCESFUL, LISTENING ON ${PORT}`)
 })
+
+app.use('/api', exampleRouter) // Use the router as middleware
+
+
+app.use((request, response) => {
+    response.status(404).send("No se ha encontrado ninguna ruta");
+});

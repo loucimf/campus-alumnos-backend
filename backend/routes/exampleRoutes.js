@@ -1,6 +1,8 @@
 import { Router } from "express";
 import path from 'path'
 import { Alumno } from "../models/Alumno.js";
+import { Test } from "../models/Alumno.js"
+
 // import { dataUser } from '../frontend/main.js'
 
 const exampleRouter = Router()
@@ -17,5 +19,17 @@ const exampleRouter = Router()
 //         response.status(400).send('Something went wrong!');
 //     }
 // });
+
+
+exampleRouter.get('/test', async (req, res) => {
+    try {
+        const data = await Test.find({}); // Get all documents
+        console.log(data)
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 
 export default exampleRouter

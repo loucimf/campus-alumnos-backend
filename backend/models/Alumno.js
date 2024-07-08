@@ -21,3 +21,16 @@ const AlumnoSchema = mongoose.Schema(
 const Alumno = mongoose.model("Alumno", AlumnoSchema)
 
 export {Alumno}
+
+const TestSchema = new mongoose.Schema({
+    hello: {
+        type: String,
+        required: [ true ]
+    }
+});
+
+
+const Test = mongoose.model('Test', TestSchema, 'test');
+
+export { Test }
+
