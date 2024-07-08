@@ -10,18 +10,10 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT
 const MONGO_URL = process.env.MONGO_URL
-const webPath = path.join(import.meta.dirname, 'api-signup', 'index.html')
 
 app.use(morgan("tiny"))
 
 app.use(express.static('api-signup'))
-
-app.use('/example', exampleRouter)
-
-app.get('/123', (request, response) => {
-    console.log(webPath)
-    response.sendFile(webPath)
-})
 
 app.use((request, response) => {
     response.status(404).send("No se ha encontrado ninguna ruta");
